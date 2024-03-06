@@ -13,5 +13,5 @@ def menu(request):
     return render(request, "menu.html", {'content': main_data})
 
 def home(request):
-    return render(request, 'index.html',{})
+    return render(request, 'index.html',{'current_year': 2022})
 
