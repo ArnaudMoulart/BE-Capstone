@@ -1,11 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
-  <table>
+
     {% for item in menu %}
-      <tr>
-        <td>{{item.Title}}</td>
-        <td>{{item.Price}}</td>
-      </tr>
+    <p>
+      <!-- Step 14: Add DTL variable for name -->
+      <a href="{% url 'menu_item' pk=item.pk %}">
+      {{item.Title}}</a>
+      <span class="menu-price">
+          <!-- Step 14: Add DTL variable for price -->
+          ${{item.Price}}.00
+      </span>
+  </p>
     {% endfor %}
-  </table>
+
 {% endblock content %}

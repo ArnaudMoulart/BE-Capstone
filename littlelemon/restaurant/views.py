@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from .forms import BookingForm
 from .models import Menu
+
 
 # Create your views here.
 
@@ -16,5 +18,19 @@ def home(request):
     return render(request, 'index.html',{'current_year': 2022})
 
 def book(request):
-    return render(request, 'book.html',{'current_year': 2022})
+    form = BookingForm()
+    if request.method == 'POST':
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            form.save()
+    context = {'form':form}
+    return render(request, 'book.html', context)
+
+def display_menu_item(request, pk=None): 
+    if pk: 
+        menu_item = Menu.objects.get(pk=pk) 
+    else: 
+        menu_item = "" 
+    return render(request, 'menu_item.html', {"menu_item": menu_item}) 
+
 
