@@ -9,7 +9,7 @@ class Booking(models.Model):
 
 class Menu(models.Model):
     Title = models.CharField(max_length=255)
-    Price = models.FloatField()
+    Price = models.DecimalField(max_digits=5,decimal_places=2)
     Inventory = models.IntegerField()
     menu_item_description = models.TextField(max_length=1000, default='')
 
