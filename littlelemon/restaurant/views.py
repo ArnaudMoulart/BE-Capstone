@@ -1,6 +1,11 @@
 from django.shortcuts import render
 from .forms import BookingForm
-from .models import Menu
+from .models import Menu, Booking
+from .serializers import MenuSerializer, BookingSerializer
+from rest_framework.decorators import api_view
+from rest_framework import generics
+from rest_framework.viewsets import ModelViewSet
+
 
 
 # Create your views here.
@@ -27,10 +32,25 @@ def book(request):
     return render(request, 'book.html', context)
 
 def display_menu_item(request, pk=None): 
-    if pk: 
-        menu_item = Menu.objects.get(pk=pk) 
-    else: 
-        menu_item = "" 
+    if pk:
+        menu_item = Menu.objects.get(pk=pk)
+    else:
+        menu_item = ""
     return render(request, 'menu_item.html', {"menu_item": menu_item}) 
 
+class MenuItemsView(generics.ListCreateAPIView):
+    queryset = Menu.objects.all()
+    serializer_class = MenuSerializer
 
+class SingleMenuItemView(generics.RetrieveUpdateAPIView, generics.DestroyAPIView):
+    queryset = Menu.objects.all()
+    serializer_class = MenuSerializer
+
+class BookingViewSet(ModelViewSet):
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer
+
+# class UserViewSet(ModelViewSet):
+#    queryset = User.objects.all() 
+#    serializer_class = UserSerializer
+#    permission_classes = [permissions.IsAuthenticated] 

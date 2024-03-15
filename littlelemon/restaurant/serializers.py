@@ -3,17 +3,17 @@ from django.contrib.auth.models import User, Group
 
 from .models import Menu, Booking
 
-class menuSerializer(serializers.ModelSerializer):
+class MenuSerializer(serializers.ModelSerializer):
     class Meta:
         model = Menu
         fields = ['id','Title','Price','Inventory']
 
-class bookingSerializer(serializers.ModelSerializer):
+class BookingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Booking
         fields = '__all__'
 
-class userSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['url', 'username', 'email', 'groups']
