@@ -10,6 +10,8 @@ urlpatterns = [
     
     path('menu/', views.MenuItemsView.as_view()),
     path('menu/<int:pk>', views.SingleMenuItemView.as_view()),  
+    # path('booking', views.BookingViewSet.as_view()),  
+    
 
 #   path('menu_item/<int:pk>/', views.display_menu_item, name="menu_item"),
 ]
