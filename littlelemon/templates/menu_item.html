@@ -10,20 +10,19 @@
             <!--Begin col-->
             <div class="column">
                 <h2>
-                    {{ menu_item.name }}
+                    {{menu_item.Title}}
                 </h2>
                 <p>
                     {{ menu_item.menu_item_description }}
                 </p>
                 <p>
-                    Price: ${{ menu_item.price }}.00
+                    Price: ${{ menu_item.Price }}
                 </p>
             </div>
             <!--End col-->
             <!--Begin col-->
             <div class="column">
-                <img src="/restaurant/static/img/menu_items/{{menu_item.name}}.jpg" alt="{{ menu_item.name}}" />
-                /restaurant/static/img/{{menu_item.name}}.jpg
+                <img src="{% static 'img/'%}{{menu_item.Title}}.jpg" alt="{{menu_item.Title}}" />
             </div>
             <!--End col-->
         </div>
