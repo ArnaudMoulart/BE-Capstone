@@ -15,3 +15,11 @@ class Menu(models.Model):
 
     def __str__(self):
         return self.Title
+    
+    def get_item(self):
+        return f'{self.title} : {str(self.price)}'
+    
+
+
+
+
